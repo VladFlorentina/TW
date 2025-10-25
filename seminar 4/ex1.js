@@ -37,34 +37,19 @@ class NextIntegerStream extends Stream {
 
 class EvenStream extends Stream {
   constructor(initialValue) {
-    // Determinăm prima valoare pară >= initialValue
     const firstEvenValue =
       initialValue % 2 === 0 ? initialValue : initialValue + 1;
 
-    // Inițializăm cu prima valoare pară
     super(firstEvenValue, (value) => value + 2);
   }
 }
 
-// Testare
 const evenStreamFromOdd = new EvenStream(5);
-console.log("Test EvenStream pornind de la 5:");
+console.log("Test  pornind de la 5:");
 console.log(`Prima valoare: ${evenStreamFromOdd.value}`); // 6
 for (let i = 0; i < 10; i++) {
   console.log(`evenFromOdd.next[${i}] = ${evenStreamFromOdd.next}`);
 }
-
-console.log("--------------------");
-
-const evenStreamFromEven = new EvenStream(4);
-console.log("Test EvenStream pornind de la 4:");
-console.log(`Prima valoare: ${evenStreamFromEven.value}`); // 4
-for (let i = 0; i < 10; i++) {
-  console.log(`evenFromEven.next[${i}] = ${evenStreamFromEven.next}`);
-}
-
-console.log("--------------------");
-console.log(`Total stream-uri create: ${Stream.count}`);
 
 //exercitiu video
 // class Stream {
