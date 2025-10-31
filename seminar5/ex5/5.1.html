@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agenda Mea</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 400px;
+        margin: 20px 0;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      input {
+        margin: 5px;
+        padding: 5px;
+      }
+    </style>
+    <script>
+      window.onload = () => {
+        var form = document.getElementById("form");
+        var formSubmitHandler = (e) => {
+          e.preventDefault();
+
+          var tbody = document.getElementById("contacte");
+          var nume = document.getElementById("nume").value;
+          var telefon = document.getElementById("telefon").value;
+          var rand = document.createElement("tr");
+          var celulaNume = document.createElement("td");
+          celulaNume.innerHTML = nume;
+
+          var celulaTelefon = document.createElement("td");
+          celulaTelefon.innerHTML = telefon;
+
+          rand.appendChild(celulaNume);
+          rand.appendChild(celulaTelefon);
+
+          tbody.appendChild(rand);
+
+          document.getElementById("nume").value = "";
+          document.getElementById("telefon").value = "";
+        };
+
+        form.onsubmit = formSubmitHandler;
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Agenda de contacte</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Telefon</th>
+        </tr>
+      </thead>
+      <tbody id="contacte"></tbody>
+    </table>
+
+    <h2>Adauga contact nou</h2>
+    <form id="form">
+      <input type="text" id="nume" placeholder="Nume" required />
+      <input type="text" id="telefon" placeholder="Telefon" required />
+      <button type="submit">Adauga</button>
+    </form>
+  </body>
+</html>

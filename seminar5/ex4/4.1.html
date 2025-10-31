@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exemple Evenimente</title>
+  </head>
+  <body>
+    <h2>Tratare evenimente DOM</h2>
+    <button id="myButton">Click aici</button>
+    <p id="rezultat"></p>
+
+    <script>
+      const buton = document.getElementById("myButton");
+      const rezultat = document.getElementById("rezultat");
+      const evenimentMeu = new CustomEvent("butonApasat", {
+        detail: { mesaj: "Butonul a fost apasat!" },
+      });
+
+      document.addEventListener("butonApasat", function (e) {
+        console.log("Eveniment custom primit:", e.detail.mesaj);
+        rezultat.textContent = e.detail.mesaj;
+      });
+
+      buton.addEventListener("click", function () {
+        console.log("Click pe buton!");
+        document.dispatchEvent(evenimentMeu);
+      });
+    </script>
+  </body>
+</html>
