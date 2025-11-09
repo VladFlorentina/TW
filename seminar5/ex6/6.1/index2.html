@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Cautare</title>
+  </head>
+  <body>
+    <h2>Cauta un utilizator dupa ID</h2>
+
+    <form id="formular">
+      <label for="id-input">ID:</label>
+      <input type="number" id="id-input" required />
+      <button type="submit">Cauta</button>
+    </form>
+
+    <h3>Rezultat:</h3>
+    <pre id="rezultat">Astept...</pre>
+
+    <script>
+      const form = document.getElementById("formular");
+      const rezultatAfisat = document.getElementById("rezultat");
+      const idInput = document.getElementById("id-input");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const id = idInput.value;
+        rezultatAfisat.textContent = "Se incarca...";
+
+        const response = await fetch(`/api/cauta/${id}`);
+        const data = await response.json();
+
+        if (response.ok) {
+          rezultatAfisat.textContent = `Nume: ${data.nume}`;
+        } else {
+          rezultatAfisat.textContent = `Eroare: ${data.mesaj}`;
+        }
+      });
+    </script>
+  </body>
+</html>
