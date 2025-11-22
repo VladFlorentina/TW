@@ -1,0 +1,33 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: sans-serif;
+    padding: 32px;
+    color: white;
+}
+
+.container {
+    background-color: #c21322; 
+    display: flex; 
+    gap: 15px;
+    padding: 15px;
+}
+
+.column {
+    flex: 1; 
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+}
+
+.column-item {
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+    padding: 5px;
+    text-align: center;
+}
