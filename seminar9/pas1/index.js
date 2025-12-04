@@ -1,9 +1,23 @@
+
 "use strict";
 
 const express = require("express");
-const sequelize = require("./sequelize");
-require("./models/employee");
+const sequelize = require("./config/sequelize")
+
 const app = express();
+
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+app.use(express.json());
+
+app.use("/api", require("./routes/employee2"))
+
+app.use((err, req, res, next) => {
+    res.status(500).json({ error: "Something broke!" });
+});
 
 app.set("port", process.env.PORT || 7000);
 
